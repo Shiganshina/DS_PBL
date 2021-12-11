@@ -1,0 +1,171 @@
+/* Roll a six-sided dice 6000 times */ 
+
+#include <stdio.h> 
+#include <stdlib.h> 
+
+int main(void) 
+{ 
+
+roling:
+ { int face1, face2, roll, frequency1 = 0, frequency2 = 0, 
+  frequency3 = 0, frequency4 = 0, same = 0, sum = 0, seven = 0, sodd = 0, p = 0,
+  frequency5 = 0, frequency6 = 0, prime = 0, even = 0, odd = 0, sprime = 0, md, 
+  frequency21 = 0, frequency22 = 0, frequency23  = 0, frequency24 = 0, frequency25 = 0, frequency26 = 0,
+  prime2 = 0, even2 = 0, odd2 = 0;
+
+  for ( roll = 1; roll <= 6000; roll++ ) 
+  {
+    face1 = 1 + rand() % 6; 
+    face2 = 1 + rand() % 6;
+    sum = face1 + face2;
+
+    if( sum == 2 || sum == 3 || sum == 5 || sum == 7 || sum == 11)
+    { sprime++; }
+
+    if (sum==7)
+    {
+      p++;
+    }
+
+
+    if (face1 == face2)
+    {
+      same++;
+    }
+
+    if (sum%2 == 0)
+      seven++;
+    else
+      sodd++;
+    
+    switch ( face1 ) 
+    { 
+      case 1: 
+      frequency1++;
+      odd++; 
+      break;
+      case 2: 
+      frequency2++; 
+      prime++;
+      even++;
+      break;
+      case 3: 
+      frequency3++;
+      prime++; 
+      odd;
+      break;
+      case 4: 
+      frequency4++; 
+      even;
+      break;
+      case 5: 
+      frequency5++;
+      prime++;
+      odd++;
+      break; 
+      case 6: 
+      frequency6++; 
+      even++;
+      break;
+
+    }
+
+      switch ( face2 ) 
+    { 
+      case 1: 
+      frequency21++;
+      odd2++; 
+      break;
+      case 2: 
+      frequency22++; 
+      prime2++;
+      even2++;
+      break;
+      case 3: 
+      frequency23++;
+      prime2++; 
+      odd2;
+      break;
+      case 4: 
+      frequency24++; 
+      even2;
+      break;
+      case 5: 
+      frequency25++;
+      prime2++;
+      odd2++;
+      break; 
+      case 6: 
+      frequency26++; 
+      even2++;
+      break;
+    }
+
+  }
+ 
+
+printf("\n\n 1.Roll one dice \n 2.Roll two dice \n Enter your choice: ");
+scanf("%d", &md);
+if(md == 1)
+{ printf( "%s%13s\n", "Face", "Frequency" ); 
+  printf( " 1%13d\n", frequency1 ); 
+  printf( " 2%13d\n", frequency2 ); 
+  printf( " 3%13d\n", frequency3 ); 
+  printf( " 4%13d\n", frequency4 ); 
+  printf( " 5%13d\n", frequency5 ); 
+  printf( " 6%13d\n", frequency6 ); 
+  
+
+  printf( " \n \n number of times prime numbers showed up: %d", prime);
+  printf(" \n number of times odd faces appeared: %d", odd);
+  printf(" \n number of times even faces appeared: %d", even);
+
+}
+else if( md == 2)
+{
+  printf( "%s%13s\n", "Face", "Frequency" ); 
+  printf( " 1%13d\n", frequency1 ); 
+  printf( " 2%13d\n", frequency2 ); 
+  printf( " 3%13d\n", frequency3 ); 
+  printf( " 4%13d\n", frequency4 ); 
+  printf( " 5%13d\n", frequency5 ); 
+  printf( " 6%13d\n", frequency6 ); 
+  
+
+  printf( " \n \n number of times prime numbers showed up: %d", prime);
+  printf(" \n number of times odd faces appeared: %d", odd);
+  printf(" \n number of times even faces appeared: %d", even);
+
+  printf( "\n\n %s%13s\n", "Face (second die", "Frequency" ); 
+  printf( " 1%13d\n", frequency21 ); 
+  printf( " 2%13d\n", frequency22 ); 
+  printf( " 3%13d\n", frequency23 ); 
+  printf( " 4%13d\n", frequency24 ); 
+  printf( " 5%13d\n", frequency25 ); 
+  printf( " 6%13d\n", frequency26 ); 
+  
+
+  printf( " \n \n number of times prime numbers showed up: %d", prime2);
+  printf(" \n number of times odd faces appeared: %d", odd2);
+  printf(" \n number of times even faces appeared: %d", even2);
+
+  printf("\n\n The number of times the sum was even: %d", seven);
+  printf("\n\n The number of times the sum was odd: %d", sodd);
+  printf("\n\n The number of times the sum was prime: %d", sprime);
+  printf("\n\n The number of times the throw was perfect (sum = 7) %d", p);
+}
+else
+printf("\nINVALID CHOICE");
+
+ }
+ int a;
+printf("\nDo you want to roll again ? \n 1. Yes \n 2. No \n Enter your choice: ");
+scanf("%d",&a);
+
+if (a==1)
+{
+  goto roling;
+}
+
+ return 0; 
+}
